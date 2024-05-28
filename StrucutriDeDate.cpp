@@ -93,6 +93,23 @@ void push(Node** head,int new_data)
 	*head = n;
 }
 
+void instertAfter(Node* prev_node, int new_data)
+{
+	//1. Verificam ca nodul nu este null
+	if (prev_node == NULL)
+	{
+		std::cout << "The node is NULL!! \n";
+		return;
+	}
+	//2. Creem un nod nou si setam data egala cu new_data
+	Node* n = new Node();
+	n->data = new_data;
+	//3. Next-ul nodului nou sa arate catre next-ul prev_node
+	n->next = prev_node->next;
+	//4 . Next-ul nodului vechi sa arate catre nodul nou
+	prev_node->next = n;
+}
+
 
 int main()
 {
@@ -121,12 +138,15 @@ int main()
 	push(&head, 33);
 	std::cout << "Noua lista\n";
 	printLinkedList(head);
+	instertAfter(second, 98);
+	std::cout << "Noua lista\n";
+	printLinkedList(head);
 
-	Stack s;
-	s.push(10);
-	s.push(-2);
-	s.push(3);
-	s.display();
+	//Stack s;
+	//s.push(10);
+	//s.push(-2);
+	//s.push(3);
+	//s.display();
 
 	
 	//int myArr[5] = { 6,99,32,44,0 };
